@@ -1,0 +1,1 @@
+export const textFont = "text text-xl underline";
