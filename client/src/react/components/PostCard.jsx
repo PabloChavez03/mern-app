@@ -1,10 +1,11 @@
 import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function PostCard({ posts, deletePost }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleDelete = (id) => {
     toast(
       (t) => (
@@ -45,22 +46,24 @@ export default function PostCard({ posts, deletePost }) {
         <div
           key={post._id}
           className="bg-zinc-600 text-white rounded-sm shadow-md shadow-black hover:bg-zinc-700 hover:cursor-pointer px-4 py-7"
+          onClick={() => navigate(`/posts/${post._id}`)}
         >
           <div className="flex justify-between">
             <h2>{post.title}</h2>
             <button
               className="bg-red-600 text-sm px-2 py-1 rounded-sm"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
                 handleDelete(post._id);
               }}
             >
               Delete
             </button>
           </div>
-          <p>{post.description}</p>
+            <p>{post.description}</p>
           <img
             hidden={!post.image}
-            className="h-96"
+            className="w-full object-cover"
             src={post.image?.url}
             alt="not found"
           />

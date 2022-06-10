@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./react/pages/HomePage";
 import FormPage from "./react/pages/FormPage";
 import NotFoundPage from "./react/pages/NotFoundPage";
+import UpdatePage from "./react/pages/UpdatePage";
 import { Toaster } from 'react-hot-toast'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/form" element={<FormPage />} />
+          <Route path="/posts/:id" element={<UpdatePage/>} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>

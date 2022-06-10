@@ -22,7 +22,7 @@ export default function Posts() {
   );
 
   return (
-    <div>
+    <div >
       <PostCard posts={posts} deletePost={deletePost}/>
     </div>
   );
